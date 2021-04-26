@@ -1,3 +1,17 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
 .App {
   text-align: center;
 }
@@ -41,12 +55,17 @@ h1 {
   font-size: 60px;
 }
 
+h2 {
+  font-size: 30 px;
+}
+
 .add {
   font-size: 60px;
-  width: 50px;
+  width: 100px;
+  margin-right: 20px;
 }
 
 .minus {
   font-size: 60px;
-  width: 50px;
+  width: 100px;
 }

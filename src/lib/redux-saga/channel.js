@@ -13,7 +13,7 @@ export function stdChannel() {
     for (let i = 0, len = takers.length; i < len; i++) {
       const taker = takers[i];
 
-      if (taker["MATCH"] === action.actionType) {
+      if (taker["MATCH"] === action.type) {
         taker(action);
       }
     }

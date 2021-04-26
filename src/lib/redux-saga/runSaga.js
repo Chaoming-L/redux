@@ -2,7 +2,7 @@ import proc from "./proc";
 
 export function runSaga({ channel, getState, dispatch }, sagaRoot, ...args) {
   // saga是一个Generator，运行后得到一个迭代器
-  const iterator = saga(...args);
+  const iterator = sagaRoot(...args);
 
   const env = {
     channel,
