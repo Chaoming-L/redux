@@ -17,7 +17,7 @@ function App({ name, count, add, minus }) {
           </button>
         </div>
 
-        <h2>saga: {name}</h2>
+        <h2>{name}</h2>
       </header>
     </div>
   );

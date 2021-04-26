@@ -7,13 +7,13 @@ export default function counterReducer(state = initState, action) {
     case "ADD":
       return {
         ...state,
-        count: state.count + 1,
+        count: state.count + (action.num ?? 1),
       };
 
     case "MINUS":
       return {
         ...state,
-        count: state.count - 1,
+        count: state.count - (action.num ?? 1),
       };
 
     default:
