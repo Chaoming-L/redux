@@ -1,7 +1,16 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const connect = (mapStateToProps, mapDispatchToProps) => (WrapComponent) => {
   return class extends React.Component {
+    static contextTypes = {
+      store: PropTypes.shape({
+        subscribe: PropTypes.func.isRequired,
+        dispatch: PropTypes.func.isRequired,
+        getState: PropTypes.func.isRequired,
+      }).isRequired,
+    };
+
     constructor(props, context) {
       super(props, context);
       this.store = context.store;
@@ -12,8 +21,7 @@ const connect = (mapStateToProps, mapDispatchToProps) => (WrapComponent) => {
 
     componentDidMount() {
       this.unsubscribe = this.store.subscribe(() => {
-        // TODO 这里可以做浅比较再setState
-        this.setState(mapDispatchToProps(this.store.getState()));
+        this.setState(mapStateToProps(this.store.getState()));
       });
     }
 
