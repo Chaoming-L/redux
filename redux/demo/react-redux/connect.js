@@ -26,3 +26,5 @@ const connect = (mapStateToProps, mapDispatchToProps) => (WrapComponent) => {
     }
   };
 };
+
+export default connect

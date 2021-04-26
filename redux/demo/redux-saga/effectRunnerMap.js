@@ -6,7 +6,7 @@ function isPromise(obj) {
 }
 
 function runTakeEffect(env, payload, cb) {
-  env.channel.take(cb);
+  env.channel.take(cb, payload.actionType);
 }
 
 function runForkEffect(env, { fn }, cb) {
