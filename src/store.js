@@ -1,8 +1,10 @@
 import { createStore, combineReducers, applyMiddleware } from "./lib/redux";
 import { timeMiddleware, loggerMiddleware } from "./lib/middlewares";
-import counterReducer from "./lib/reducers/counter";
-import infoReducer from "./lib/reducers/info";
-import createSagaMiddleware from "./lib/redux-saga/index";
+import { createSagaMiddleware } from "./lib/redux-saga";
+
+import counterReducer from "./reducers/counter";
+import infoReducer from "./reducers/info";
+
 import sagaRoot from "./sagaRoot";
 
 const reducer = combineReducers({

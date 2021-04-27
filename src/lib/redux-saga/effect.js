@@ -1,22 +1,29 @@
-const makeEffect = (type, payload) => ({
-  type,
-  payload,
-});
-
 export function take(actionType) {
-  return makeEffect("TAKE", { actionType });
+  return {
+    type: "TAKE",
+    payload: { actionType },
+  };
 }
 
 export function fork(fn) {
-  return makeEffect("FORK", { fn });
+  return {
+    type: "FORK",
+    payload: { fn },
+  };
 }
 
 export function call(fn, ...args) {
-  return makeEffect("CALL", { fn, args });
+  return {
+    type: "CALL",
+    payload: { fn, args },
+  };
 }
 
 export function put(action) {
-  return makeEffect("PUT", { action });
+  return {
+    type: "PUT",
+    payload: { action },
+  };
 }
 
 export function takeEvery(actionType, saga) {

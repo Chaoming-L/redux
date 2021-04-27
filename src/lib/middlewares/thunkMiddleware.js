@@ -3,3 +3,5 @@ const thunkMiddleware = (store) => (next) => (action) => {
     ? action(store.dispatch, store.getState)
     : next(action);
 };
+
+export default thunkMiddleware;
