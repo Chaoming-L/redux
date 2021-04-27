@@ -20,22 +20,13 @@ export default function proc(env, iterator) {
   }
 
   function digestEffect(effect, _next) {
-    let effectSettled;
-    function curNext(res, isErr) {
-      // 如果已经运行过了，直接return
-      if (effectSettled) return;
-
-      effectSettled = true;
-      _next(res, isErr);
-    }
-
     // effect 其实就是 yield 后面的结果
     if (effect) {
       // 获取对应type的处理器，然后拿来处理当前effect
       const effectRunner = effectRunnerMap[effect.type];
-      effectRunner && effectRunner(env, effect.payload, curNext);
+      effectRunner && effectRunner(env, effect.payload, _next);
     } else {
-      curNext();
+      _next();
     }
   }
 }

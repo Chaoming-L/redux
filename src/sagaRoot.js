@@ -9,11 +9,10 @@ export default function* sagaRoot() {
     yield put({ type: "ADD", num: 100 });
   });
 
-  
-  let n = 5
-  while(n >= 0) {
-    yield take('MINUS')
-    yield put({ type: "ADD", num: 1 });
-    n--
-  } 
+  let n = 5;
+  while (n > 0) {
+    yield take("MINUS");
+    n--;
+    yield put({ type: "SET_NAME", name: `MINUS take 剩余${n}次` });
+  }
 }

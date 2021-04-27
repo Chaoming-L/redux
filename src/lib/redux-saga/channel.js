@@ -6,15 +6,22 @@ export function stdChannel() {
     next["ACTION_TYPE"] = actionType;
     takers.push(next);
 
-    console.info('takers', takers);
+    next.remove = () => {
+      const index = takers.indexOf(next);
+      if (index >= 0) {
+        takers.splice(index, 1)
+      }
+    };
+
+    console.info("takers", takers);
   }
 
   // 遍历所有注册的事件,触发对应的的taker
   function put(action) {
     takers.forEach((taker) => {
       if (taker["ACTION_TYPE"] === action.type) {
-        console.log(action.type);
-        taker(action);
+        taker.remove()
+        taker(action)
       }
     });
   }
