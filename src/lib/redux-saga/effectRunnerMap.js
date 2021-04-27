@@ -4,6 +4,15 @@ function runTakeEffect(env, payload, next) {
   env.channel.take(next, payload.actionType);
 }
 
+function runForkEffect(env, { saga }, next) {
+  // 运行fn得到一个迭代器
+  const taskIterator = saga();
+  proc(env, taskIterator);
+
+  // 不需要等待proc的结果,直接调用next
+  next();
+}
+
 function runCallEffect(env, { fn, args }, next) {
   const result = fn.apply(null, args);
 
@@ -17,20 +26,8 @@ function runCallEffect(env, { fn, args }, next) {
 }
 
 function runPutEffect(env, { action }, next) {
-  // 直接dispatch(action)
-  const result = env.dispatch(action);
-
-  next(result);
-}
-
-function runForkEffect(env, { fn }, next) {
-  // 运行fn得到一个迭代器
-  const taskIterator = fn();
-
-  // 直接将taskIterator给proc处理
-  proc(env, taskIterator);
-
-  // 直接调用next，不需要等待proc的结果
+  // 直接 store.dispatch(action)
+  env.dispatch(action);
   next();
 }
 

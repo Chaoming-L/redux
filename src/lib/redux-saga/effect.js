@@ -5,10 +5,10 @@ export function take(actionType) {
   };
 }
 
-export function fork(fn) {
+export function fork(saga) {
   return {
     type: "FORK",
-    payload: { fn },
+    payload: { saga },
   };
 }
 

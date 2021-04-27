@@ -16,12 +16,9 @@ const createSagaMiddleware = () => {
     });
 
     return (next) => (action) => {
-      const result = next(action);
-
-      // 将收到的 action 转发给 saga
+      next(action);
+      // 将 action 转发给 saga,
       channel.put(action);
-
-      return result;
     };
   };
 

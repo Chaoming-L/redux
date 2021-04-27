@@ -1,5 +1,5 @@
 const initState = {
-  name: "手写redux",
+  name: "实现 Redux",
 };
 
 export default function InfoReducer(state = initState, action) {
