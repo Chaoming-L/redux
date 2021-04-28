@@ -46,11 +46,8 @@ const createStore = function (initState) {
   // 修改状态
   function dispatch(newState) {
     state = newState;
-    /* 通知 */
-    for (let i = 0; i < listeners.length; i++) {
-      const listener = listeners[i];
-      listener();
-    }
+    // 遍历任务队列，逐一执行
+    listeners.forEach(fn => fn());
   }
 
   // 外部访问 state 的唯一办法
