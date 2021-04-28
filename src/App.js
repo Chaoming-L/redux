@@ -2,7 +2,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import { connect } from "./lib/react-redux";
 
-function App({ name, count, add, minus }) {
+function App({ info, count, add, minus, fetch }) {
   return (
     <div className="App">
       <header className="App-header">
@@ -16,8 +16,15 @@ function App({ name, count, add, minus }) {
             -
           </button>
         </div>
-
-        <h2>{name}</h2>
+        <br/>
+        <br/>
+        <br/>
+        <h2>
+          <button onClick={fetch} className="btn">
+            fetch
+          </button>
+          : {info.loading ? <img src={logo} className="loading" alt="logo" /> : info.name}
+        </h2>
       </header>
     </div>
   );
@@ -25,12 +32,13 @@ function App({ name, count, add, minus }) {
 
 const mapStateToProps = (state) => ({
   count: state.counter.count,
-  name: state.info.name
+  info: state.info,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   add: () => dispatch({ type: "ADD" }),
   minus: () => dispatch({ type: "MINUS" }),
+  fetch: () => dispatch({ type: "FETCH" }),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

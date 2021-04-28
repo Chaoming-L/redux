@@ -1,18 +1,18 @@
-import { call, put, takeEvery, take } from "./lib/redux-saga/effect";
+import { call, put, takeEvery } from "./lib/redux-saga/effect";
+import { getAnimal } from './getAnimal'
 
-const sleep = (time) => new Promise((r) => setTimeout(r, time));
+const sleep = (time) => new Promise((r) => setTimeout(() => {
+  r(getAnimal());
+}, time));
+
 
 export default function* sagaRoot() {
-  yield takeEvery("ADD", function* () {
-    yield put({ type: "SET_NAME", name: "saga: 点击2秒后再 + 100" });
-    yield call(sleep, 2000);
-    yield put({ type: "ADD", num: 100 });
-  });
+  yield takeEvery("FETCH", function* () {
+    yield put({type: 'SET_LOADING', loading: true})
 
-  let n = 5;
-  while (n > 0) {
-    yield take("MINUS");
-    n--;
-    yield put({ type: "SET_NAME", name: `saga: MINUS take 剩余${n}次` });
-  }
+    const animal = yield call(sleep, 1000);
+
+    yield put({type: 'SET_LOADING', loading: false})
+    yield put({ type: "SET_NAME", name: animal});
+  });
 }

@@ -17,13 +17,24 @@ code {
 }
 
 .App-logo {
-  height: 40vmin;
+  position: fixed;
+  top: 10px;
+  left: -30px;
+  height: 30vmin;
   pointer-events: none;
+}
+
+.loading {
+  height: 4vmin;
 }
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
+  }
+
+  .loading {
+    animation: App-logo-spin infinite 5s linear;
   }
 }
 
@@ -68,4 +79,8 @@ h2 {
 .minus {
   font-size: 60px;
   width: 100px;
+}
+
+.btn {
+  font-size: 60px;
 }

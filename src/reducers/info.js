@@ -1,5 +1,6 @@
 const initState = {
-  name: "实现 Redux",
+  name: "🧀",
+  loading: false,
 };
 
 export default function InfoReducer(state = initState, action) {
@@ -8,6 +9,11 @@ export default function InfoReducer(state = initState, action) {
       return {
         ...state,
         name: action.name,
+      };
+    case "SET_LOADING":
+      return {
+        ...state,
+        loading: action.loading,
       };
     default:
       return state;
