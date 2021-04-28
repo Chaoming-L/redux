@@ -46,11 +46,8 @@ const createStore = function (initState) {
   // 修改状态
   function dispatch(newState) {
     state = newState;
-    /* 通知 */
-    for (let i = 0; i < listeners.length; i++) {
-      const listener = listeners[i];
-      listener();
-    }
+    // 遍历任务队列，逐一执行
+    listeners.forEach(fn => fn());
   }
 
   // 外部访问 state 的唯一办法
@@ -89,7 +86,7 @@ store.dispatch({
 });
 ```
 
-不知不觉，我们已经实现了 redux 的 `createStore`，提供了 `subsrcibe`,`dispatch`,`getState`三个API。
+不知不觉，我们已经实现了 redux 的 `createStore`，提供了 `subscribe`,`dispatch`,`getState`三个API。
 
 ### 可预测的状态管理
 
