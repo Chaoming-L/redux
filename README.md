@@ -89,7 +89,7 @@ store.dispatch({
 });
 ```
 
-不知不觉，我们已经实现了 redux 的 `createStore`，提供了 `subsrcibe`,`dispatch`,`getState`三个API。
+不知不觉，我们已经实现了 redux 的 `createStore`，提供了 `subscribe`,`dispatch`,`getState`三个API。
 
 ### 可预测的状态管理
 
