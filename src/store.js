@@ -14,9 +14,9 @@ const reducer = combineReducers({
 
 const saga = createSagaMiddleware();
 
-const rewriteStore = applyMiddleware(saga);
+const rewriteCreateStore = applyMiddleware(saga);
 
-const store = createStore(reducer, {}, rewriteStore);
+const store = createStore(reducer, {}, rewriteCreateStore);
 
 saga.run(sagaRoot);
 
