@@ -12,12 +12,12 @@ const reducer = combineReducers({
   info: infoReducer,
 });
 
-const saga = createSagaMiddleware();
+const sagaMiddleware = createSagaMiddleware();
 
-const rewriteCreateStore = applyMiddleware(saga);
+const rewriteCreateStore = applyMiddleware(sagaMiddleware);
 
 const store = createStore(reducer, {}, rewriteCreateStore);
 
-saga.run(sagaRoot);
+sagaMiddleware.run(sagaRoot);
 
 export default store;
