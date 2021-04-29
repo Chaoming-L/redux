@@ -16,14 +16,18 @@ function App({ info, count, add, minus, fetch }) {
             -
           </button>
         </div>
-        <br/>
-        <br/>
-        <br/>
+        <br />
+        <br />
+        <br />
         <h2>
           <button onClick={fetch} className="btn">
             fetch
           </button>
-          : {info.loading ? <img src={logo} className="loading" alt="logo" /> : info.name}
+          {info.loading ? (
+            <img src={logo} className="loading" alt="logo" />
+          ) : (
+            <span className="name">{info.name}</span>
+          )}
         </h2>
       </header>
     </div>

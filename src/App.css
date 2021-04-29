@@ -24,10 +24,6 @@ code {
   pointer-events: none;
 }
 
-.loading {
-  height: 4vmin;
-}
-
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -83,4 +79,15 @@ h2 {
 
 .btn {
   font-size: 60px;
+}
+
+.loading {
+  height: 50px;
+}
+
+.name {
+  margin-left: 30px;
+  font-size: 50px;
+  width: 100px;
+  height: 80px;
 }
